@@ -1,0 +1,172 @@
+S,r,Chrysler,Aspen,Red
+F,x,Chrysler,Crossfire,Silver
+M,r,Chrysler,PT Cruiser,Blue
+C,a,Chrysler,Sebring
+T,a,Chrysler,Sebring,White
+C,a,Chrysler,Sebring,Black
+L,a,Chrysler,Town and Country,Black
+C,r,Chevrolet,Aveo,Red
+C,a,Chevrolet,Cobalt,Blue
+M,a,Chevrolet,Malibu,Green,  Silver
+M, A, Honda, Accord , Red
+S, r, Honda, Odyssey,Blue
+S ,r   ,Chrysler  ,Aspen,Red   
+F,a,Chrysler,Crossfire,Silver
+  M, A, BMW, Gran Turismo, Silver
+  M, A, BMW, Gran Turismo, Black
+  M, A, BMW, Gran Turismo, Silver 
+M,r,Chrysler,PT Cruiser,Blue
+C,a,Chrysler,Sebring,White
+C,a,Chrysler,Sebring,White
+C,a,Chrysler,Sebring,Black
+L,a,Chrysler,Town and Country,Black
+C,r,Chevrolet,Aveo,Red
+C,a,Chevrolet,Cobalt,Blue
+M,a,Chevrolet,Malibu,Green
+S,a,Chevrolet,Suburban,Black
+S,a,Chevrolet,Tahoe,Silver
+M,a,Chevrolet,Impala,Silver
+C,r,Chevrolet,Aveo,White
+C,a,Chevrolet,Cobalt,White
+M,a,Chevrolet,Malibu,White
+S,a,Chevrolet,Suburban,White
+S,a,Chevrolet,Tahoe,Silver
+M,R,Chevrolet,Impala,Silver
+C,a,Chevrolet,Aveo,Red
+C,a ,Chevrolet,Cobalt,Blue
+M,a,Chevrolet,Malibu,White
+S,a,Chevrolet,Suburban,Black
+S,a,Chevrolet,Tahoe,Blue
+M,a,Chevrolet,Impala,Blue
+C,a,Chevrolet,Aveo,Red
+C,a,Chevrolet,Cobalt,Blue
+C,a,Chevrolet,Aveo,White
+C,a,Chevrolet,Cobalt,White
+L,a,Chrysler,Town and Country,Black
+M,r,Chrysler,PT Cruiser,Blue
+M,r,Chrysler,PT Cruiser,White
+S,r,Chrysler,Aspen,Red
+C,A,Honda,Fit,Gold
+F,a,Ford,Mustang,Red
+S, R, Ford , Escape Hybrid, Red
+S,a,Ford,Escape,Silver
+S,a,Ford,Edge,White
+S,a,Ford,Explorer,Silver
+M,a,Ford,Fusion,Gold
+M,a,Ford,Fusion Hybrid  ,Gold
+L,a,Ford,Taurus,Gold
+C,r,Ford,Focus,White
+C,r,Ford,Focus,White
+C,a,Ford,Focus,White
+L,a,Ford,Taurus,Gold
+C,a,Ford,Focus,White
+C,a,Ford,Focus,White
+S,a,Ford,Expedition,White
+C,a,Honda,Fit,Red
+S,a,Buick,Enclave,Silver
+L,a,Buick,Lucerne,Gold
+M,a,Buick,LaCrosse,Gold
+M,a,Buick,LaCrosse,White
+M,a,Buick,LaCrosse,Black
+M,a,Honda,Accord,Red
+M,r,Honda,Accord,Blue
+M,a,Honda,Accord,Red
+M,a,Honda,Accord,Black
+C,r,Honda,Civic,Silver
+C,a,Honda,Fit,White
+S,a,Honda,Odyssey,Silver
+C,r,Toyota,Corolla,Silver
+C,a,Toyota,Corolla,Blue
+M,a,Toyota,Camry,Blue
+C,a,Toyota,   Prius,Red
+C,a,Toyota,Prius,Red
+S,a,Toyota,Highlander,Silver
+S,a,Toyota,Highlander,Silver
+C,r,Honda,Civic,Blue
+C,r,Honda,Civic,Red
+C,a,Honda,Civic,Silver
+M  ,R,    Toyota,Camry   ,White
+M,a,Toyota,Camry,Red
+M,a,Toyota,Camry,Gold
+M,r,Toyota,Camry,Gold
+M,r,Toyota,Camry,White
+S,a,Toyota,Highlander,Gold
+C,a,Saturn,Aura,Blue
+S,a,Saturn,Outlook,White
+C,a,Saturn,Aura,Blue
+F,a,Saturn,Sky,Yellow
+S,a,Saturn,Outlook,White
+M,a,Nissan,Altima,Red
+L,a,Nissan,Maxima,Blue
+S,a,Nissan,Murano,White
+C,r,Nissan,Sentra,White
+F,a, Nissan,  Z,Black
+S,a,Nissan,Pathfinder,Blue
+C,a,Nissan,Sentra,White
+C,r,Nissan,Sentra,White
+M,a,Nissan,Altima,Silver
+M,a,Nissan,Altima,White
+M,a,Mitsubishi,Galant,Black
+M,a,Mitsubishi,Galant,Black
+F,a,Mitsubishi,Eclipse,Green
+C,a,Mitsubishi,Lancer,White
+S,a,Mitsubishi,Outlander,White
+M,a,Mitsubishi,Galant,Black
+M,a,Mitsubishi,Galant,White
+M,a,Mitsubishi,Galant,Black
+M,r,Mercury,Sable,Red
+C,a,Mazda,  MAZDA3,   White
+M,a,Mercury,Sable,Red
+S,a,Mercury,Mariner,Black
+S,a,Mercury,Mariner,Black
+L,a,Mercury,Grand Marquis,Silver
+M,a,Mercury,Sable,Red
+C,a,Mazda,MAZDA3,White
+C,a,Mazda,MAZDA3,White
+C,r,Mazda,MAZDA3,White
+M,a,Mazda,MAZDA6,White
+C,a,Mazda,Tribute,Blue
+C,r,Mazda,MAZDA3,White
+M,a,Mazda,MAZDA6,Red
+F,a,Mazda,Miata,Silver
+C,a,Mazda,Tribute,White
+L,a,  Lincoln,   Town Car,Black
+S,r,Subaru,Outback,Black
+M,a,Subaru,Tribeca,Silver
+C,a,Mazda,Tribute,Black
+C,r,Pontiac,Vibe,Green
+F,a,Pontiac,Solstice,Red
+F,a,Pontiac,Solstice,Red
+C,a,Mazda,Tribute,White
+M,a,Chevrolet,Malibu,White
+L,a,Pontiac,Grand Prix,Gold
+S,a,Subaru,Outback,Black
+M,a,Volkswagon,Passat,White
+C,r,Volkswagon,Jetta,White
+C,a,Volkswagon,Rabbit,Gold
+S,a,Lincoln,Navigator,Gold
+S,a,Lincoln,Navigator,Blue
+L,a,Lincoln,Town Car,Black
+L,a,Lincoln,Town Car,Black
+M,a,Dodge,Avenger,Red
+F,a,Dodge,Challenger,Black
+M,a,Dodge,Charger,White
+S,a,Dodge,Grand Caravan,Black
+F,a,Dodge,Viper,Gold
+C,a,Mazda,Tribute,White
+C,a,Mazda,Tribute,White
+M,a,Subaru,Tribeca,Silver
+M,a,Subaru,Tribeca,Silver
+C,a,Pontiac,Vibe,Silver
+C,r,Pontiac,Vibe,Red
+M,a,Chevrolet,Malibu,Black
+M,a,Chevrolet,Malibu,White
+M,a,Volkswagon,Passat,White
+C,r,Volkswagon,Jetta,White
+C,a,Volkswagon,Rabbit,Gold
+M,a,Dodge,Avenger,Red
+M,a,Dodge,Avenger,Black
+M,a,Dodge,Avenger,Red
+M,a,Dodge,Charger,White
+M,a,Dodge,Charger,White
+S,a,Dodge,Grand Caravan,White

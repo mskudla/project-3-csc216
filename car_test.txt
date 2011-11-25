@@ -1,0 +1,7 @@
+  S,r,A,A,A
+M,a,X,X,X
+  M,r,X,X,X
+C,a,Y,Y,Y
+L,a,B,B,B
+L,a,X,T,T
+  M,r,X,X,X
