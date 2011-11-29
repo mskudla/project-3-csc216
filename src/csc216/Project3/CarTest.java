@@ -1,4 +1,4 @@
-package csc216.Fall2011.Project3;
+package csc216.Project3;
 
 import static org.junit.Assert.*;
 

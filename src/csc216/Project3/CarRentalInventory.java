@@ -27,11 +27,11 @@ public class CarRentalInventory implements Inventory
 				try
 				{
 				Car newCar = Car.getCarFromString(currentLine, invLine);
-				if(newCar.numberAvailable == 1)
+				if(newCar.numberAvailable > 0)
 				{
 					availableCars.insertAvailable(newCar);
 				}
-				else if(newCar.numberReserved == 1)
+				else if(newCar.numberReserved > 0)
 				{
 					reservedCars.insertReserved(newCar);
 				}
@@ -57,14 +57,20 @@ public class CarRentalInventory implements Inventory
 	public static void main(String[] args)
 	{
 		CarRentalInventory carInv = new CarRentalInventory("car_data.txt");
-//		carInv.availableCars.print();
-//		carInv.reservedCars.print();
-		String[] carByKind = carInv.availableCars.getStringByKind(0);
-			for(int i = 0; i < carByKind.length; i++)
-				System.out.println(carByKind[i]);
-			carInv.availableCars.print();
 			carInv.reservedCars.print();
-		
+			String reservedCars[] = carInv.reserved();
+			System.out.println(reservedCars[0]);
+			System.out.println("Number of available cars: " + carInv.totalAvailable());
+			System.out.println("Number of res cars: " + carInv.totalReserved());
+			carInv.returnItem(0);
+		reservedCars = carInv.reserved();
+		System.out.println(reservedCars[0]);
+		System.out.println("Number of available cars: " + carInv.totalAvailable());
+		System.out.println("Number of res cars: " + carInv.totalReserved());
+
+		carInv.availableCars.print();
+		carInv.reservedCars.print();
+
 	}
 	
 	/** 
@@ -108,10 +114,7 @@ public class CarRentalInventory implements Inventory
 	{
 		Car[] reserveCar = availableCars.getCarByKind(kind);
 		Car carToReserve = reserveCar[position];
-		if(reservedCars.contains(carToReserve))
-		{
 		
-		}
 
 	}
 
@@ -125,7 +128,11 @@ public class CarRentalInventory implements Inventory
 	@Override
 	public void returnItem(int position) 
 	{
-		// TODO Auto-generated method stub
+		Car[] returnCar = reservedCars.getCarByKind(0);
+		Car carToReturn = returnCar[position];
+		availableCars.insertAvailable(carToReturn);
+		reservedCars.cleanReserved(carToReturn);
+		
 
 	}
 
@@ -137,8 +144,7 @@ public class CarRentalInventory implements Inventory
 	@Override
 	public int totalAvailable() 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return availableCars.countAvailable();
 	}
 
 	/**
@@ -149,8 +155,7 @@ public class CarRentalInventory implements Inventory
 	@Override
 	public int totalReserved() 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return reservedCars.countReserved();
 	}
 
 }

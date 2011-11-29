@@ -52,7 +52,6 @@ boolean statusOfAvail;
 	@Override
 	public void reserve() 
 	{
-		this.numberAvailable--;
 		this.numberReserved++;
 	}
 
@@ -62,8 +61,7 @@ boolean statusOfAvail;
 	@Override
 	public void returnToInventory() 
 	{
-		this.numberAvailable++;
-		this.numberReserved--;		
+		this.numberAvailable++;		
 	}
 
 	/**
