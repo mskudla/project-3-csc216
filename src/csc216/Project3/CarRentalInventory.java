@@ -38,7 +38,8 @@ public class CarRentalInventory implements Inventory
 				}
 				catch(CarDataException cde)
 				{
-					System.out.println("Error when generating inventory from file.");
+					System.err.println(cde.getMessage());
+
 				}
 				finally
 				{
@@ -57,19 +58,10 @@ public class CarRentalInventory implements Inventory
 	public static void main(String[] args)
 	{
 		CarRentalInventory carInv = new CarRentalInventory("car_data.txt");
-			carInv.reservedCars.print();
-			String reservedCars[] = carInv.reserved();
-			System.out.println(reservedCars[0]);
-			System.out.println("Number of available cars: " + carInv.totalAvailable());
-			System.out.println("Number of res cars: " + carInv.totalReserved());
-			carInv.returnItem(0);
-		reservedCars = carInv.reserved();
-		System.out.println(reservedCars[0]);
-		System.out.println("Number of available cars: " + carInv.totalAvailable());
-		System.out.println("Number of res cars: " + carInv.totalReserved());
+//		carInv.availableCars.print();
 
-		carInv.availableCars.print();
-		carInv.reservedCars.print();
+		System.out.println(carInv.totalAvailable());
+		System.out.println(carInv.totalReserved());
 
 	}
 	
@@ -103,8 +95,8 @@ public class CarRentalInventory implements Inventory
 
 	/**
 	 * Reserve an item from the pool of available items, filtered
-	 *   by kind. The item reserved is determined by its position
-	 *   in the string returned by availableByKind(). 
+	 * by kind. The item reserved is determined by its position
+	 * in the string returned by availableByKind(). 
 	 * @param position position (index) of item to be reserved.
 	 * @param kind determines which items are considered.
 	 */
@@ -114,13 +106,14 @@ public class CarRentalInventory implements Inventory
 	{
 		Car[] reserveCar = availableCars.getCarByKind(kind);
 		Car carToReserve = reserveCar[position];
-		
-
+		System.out.println(reserveCar[position].getDescription() + " MEGA TEST");
+		reservedCars.insertReserved(carToReserve);
+		availableCars.cleanAvailable(carToReserve);
 	}
 
 	/**
 	 * A reserved item to the pool of available items, where the item
-	 *   is determined by its position in the string returned by 
+	 * is determined by its position in the string returned by 
 	 *   reserved().
 	 * @param position position of the item to be returned.
 	 */
@@ -132,8 +125,6 @@ public class CarRentalInventory implements Inventory
 		Car carToReturn = returnCar[position];
 		availableCars.insertAvailable(carToReturn);
 		reservedCars.cleanReserved(carToReturn);
-		
-
 	}
 
 	/**

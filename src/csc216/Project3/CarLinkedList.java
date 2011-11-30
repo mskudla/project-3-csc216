@@ -88,9 +88,7 @@ Node head;  // Reference to the first element in the list
 	    	  	}
 	    	  else 
 	    	  	{ // x belongs after the front item
-//	    		  x.returnToInventory();
 	    		  previous.link = new Node(x, current);
-
 	    	  	}     
 	      }
 	   }	   
@@ -98,7 +96,7 @@ Node head;  // Reference to the first element in the list
 	   public void insertReserved(Car x){
 		      Node current = head;  // First pointer to travel down the list
 		      Node previous = null; // Follows the first pointer
-		      String insertCar = x.getDescription();  
+		     
 		    
 		      // Search for the car object that already exists
 		      while (current != null && (current != null && (current.car.compareTo(x) < 0))) {
@@ -114,7 +112,8 @@ Node head;  // Reference to the first element in the list
 		      
 		      else
 		      {
-		    		  head = new Node(x, head);    
+		    	  x.numberReserved = 1;
+		    	head = new Node(x, head);    
 		      }
 		      
 		   }	   
@@ -123,7 +122,7 @@ Node head;  // Reference to the first element in the list
 	   {
 		   String[] addCar = null;
 		   String[] stringByKind = new String[0];
-		   Node k = head;
+		   Node k = this.head;
 		      while (k != null) 
 		      {
 		    	  if(k.car.carKind == kindToFind || kindToFind == 0)
@@ -163,15 +162,18 @@ Node head;  // Reference to the first element in the list
 	   {
 		   Node current = head;  // First pointer to travel down the list
 		   Node previous = null; // Follows the first pointer
-		   
 		   while (current != null)
 		   {
 			   if(current.car.compareTo(reservedCar) == 0)
-					 current.car.numberAvailable--;
-			   if(current.car.numberAvailable == 0 && previous !=null)
+				   current.car.numberAvailable--;			
+			   
+			   if(current.car.numberAvailable == 0 && previous != null)
 				   previous.link = current.link;
 			   else if(current.car.numberAvailable == 0 && previous == null)
+			   {
 				  this.head = current.link;
+			   }
+			   previous = current;
 			   current = current.link;
 		   }
 	   }
@@ -179,8 +181,7 @@ Node head;  // Reference to the first element in the list
 		public void cleanReserved(Car returnedCar)
 		{
 			 Node current = head;  // First pointer to travel down the list
-			 Node previous = null; // Follows the first pointer
-			   
+			 Node previous = null; // Follows the first pointer   
 			 while (current != null)
 			   {
 				 if(current.car.compareTo(returnedCar) == 0)
@@ -189,6 +190,7 @@ Node head;  // Reference to the first element in the list
 					   previous.link = current.link;
 				   else if(current.car.numberReserved == 0 && previous == null)
 					  this.head = current.link;
+				   previous = current;
 				   current = current.link;
 			   }
 

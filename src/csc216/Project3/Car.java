@@ -91,7 +91,7 @@ boolean statusOfAvail;
 		String[] token = line.split(",");
 		if(token.length != 5)
 		{
-			throw new CarDataException(lineNumber);
+			throw new CarDataException("Bad data on line: " + lineNumber);
 		}
 		
 		Car newCar = new Car();
@@ -122,7 +122,7 @@ boolean statusOfAvail;
 			newCar.carKind = 5;
 		}
 		else
-			throw new CarDataException(lineNumber);
+			throw new CarDataException("Bad car kind on line: " + lineNumber);
 		
 		
 		if(token[1].equalsIgnoreCase("a"))
@@ -134,7 +134,7 @@ boolean statusOfAvail;
 			newCar.numberReserved++;
 		}
 		else
-			throw new CarDataException(lineNumber);
+			throw new CarDataException("Bad reserved status on line: " + lineNumber);
 		
 		newCar.carMake = token[2];
 		newCar.carModel = token[3];
