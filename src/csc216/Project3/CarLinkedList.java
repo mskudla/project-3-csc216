@@ -112,6 +112,11 @@ Node head;  // Reference to the first element in the list
 		      
 		      else
 		      {
+		    	  while (current != null)
+		    	  {
+		    		 previous = current;
+			         current = current.link;
+		    	  }
 		    	  x.numberReserved = 1;
 		    	head = new Node(x, head);    
 		      }

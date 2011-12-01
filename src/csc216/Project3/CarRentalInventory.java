@@ -1,7 +1,9 @@
 package csc216.Project3;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 
@@ -10,6 +12,12 @@ public class CarRentalInventory implements Inventory
 {	
 	CarLinkedList availableCars = new CarLinkedList();
 	CarLinkedList reservedCars = new CarLinkedList();
+	
+	public static void main(String[] args)
+	{
+		new carGUI();
+
+	}
 	
 	public CarRentalInventory(String file)
 	{
@@ -53,16 +61,6 @@ public class CarRentalInventory implements Inventory
 			e.printStackTrace();
 		}
 		
-	}
-
-	public static void main(String[] args)
-	{
-		CarRentalInventory carInv = new CarRentalInventory("car_data.txt");
-//		carInv.availableCars.print();
-
-		System.out.println(carInv.totalAvailable());
-		System.out.println(carInv.totalReserved());
-
 	}
 	
 	/** 
@@ -112,7 +110,7 @@ public class CarRentalInventory implements Inventory
 	}
 
 	/**
-	 * A reserved item to the pool of available items, where the item
+	 * A reserved item is returned to the pool of available items, where the item
 	 * is determined by its position in the string returned by 
 	 *   reserved().
 	 * @param position position of the item to be returned.
@@ -149,4 +147,83 @@ public class CarRentalInventory implements Inventory
 		return reservedCars.countReserved();
 	}
 
+	public void writeOut()
+	{
+		Car[] listReserved = reservedCars.getCarByKind(0);
+		Car[] listAvailable = availableCars.getCarByKind(0);
+		
+		try
+		{
+			String type = "";
+			String path = "C:\\CarInventory\\inventory.txt";
+			File inventoryFile = new File(path);
+			FileWriter copyWriter = new FileWriter(inventoryFile);
+			PrintWriter pw = new PrintWriter(copyWriter);
+			for(int i = 0; i < listReserved.length; i ++)
+			{	
+				switch(listReserved[i].carKind)
+				{		
+				case 1: type = "c";
+						break;
+						
+				case 2: type = "m";
+						break;
+						
+				case 3: type = "l";
+						break;
+				
+				case 4: type = "f";
+						break;	
+						
+				case 5: type ="s";
+						break;
+						
+				default: type = "Error";
+						break;		
+				}
+				for(int r = 1; r <= listReserved[i].numberReserved; r++)
+					pw.println(type + ", r, " + listReserved[i].carMake + ", " + listReserved[i].carModel + ", " + listReserved[i].carColor);
+			}
+			
+			for(int i = 0; i < listAvailable.length; i ++)
+				{
+				switch(listAvailable[i].carKind)
+				{		
+				case 1: type = "c";
+						break;
+						
+				case 2: type = "m";
+						break;
+						
+				case 3: type = "l";
+						break;
+				
+				case 4: type = "f";
+						break;	
+						
+				case 5: type ="s";
+						break;
+						
+				default: type = "Error";
+						break;		
+				}
+				for(int a = 1; a <= listAvailable[i].numberAvailable; a++)
+					pw.println(type + ", a, " + listAvailable[i].carMake + ", " + listAvailable[i].carModel + ", " + listAvailable[i].carColor);
+				}
+			try
+			{
+				copyWriter.close();			
+			}
+			catch(IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch(IOException ie)
+		{
+			
+		}
+		
+		
+	}
 }
