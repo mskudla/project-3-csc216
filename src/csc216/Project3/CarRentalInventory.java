@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class CarRentalInventory implements Inventory 
 {	
-	CarLinkedList availableCars = new CarLinkedList();
-	CarLinkedList reservedCars = new CarLinkedList();
+	private CarLinkedList availableCars = new CarLinkedList();
+	private CarLinkedList reservedCars = new CarLinkedList();
 	
 	public CarRentalInventory(String file)
 	{
@@ -219,4 +219,14 @@ public class CarRentalInventory implements Inventory
 		
 		
 	}
+	
+public CarLinkedList getAvailableCars()
+{
+	return availableCars;
+}
+
+public CarLinkedList getReservedCars()
+{
+	return reservedCars;
+}
 }

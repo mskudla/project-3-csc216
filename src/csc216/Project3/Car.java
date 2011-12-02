@@ -10,6 +10,7 @@ public class Car implements RentalItem
 	private static final int SUV = 5;
 	private static final String[] carKindArray = {"All", "Compact","Midsize","Large","Fun", "SUV"};
 
+	private String description;
 	private String stringKind;
 	private boolean stringAvail;
 	private String stringMake;
@@ -19,6 +20,7 @@ public class Car implements RentalItem
 	private int carKind, numberAvailable, numberReserved;
 	private boolean statusOfAvail;
 	private static String[] token;
+	private static Car newCar;
 
 	
 //	public Car(String kind, String make, String model, String color)
@@ -34,7 +36,7 @@ public class Car implements RentalItem
 	@Override
 	public String getDescription() 
 	{
-		String description = this.carMake + " " + this.carModel + " -- " + this.carColor;
+		description = this.carMake + " " + this.carModel + " -- " + this.carColor;
 		return description;
 	}
 
@@ -105,7 +107,7 @@ public class Car implements RentalItem
 			throw new CarDataException("Bad data on line: " + lineNumber);
 		}
 		
-		Car newCar = new Car();
+		newCar = new Car();
 		
 		for(int i = 0; i < token.length; i++)
 		{

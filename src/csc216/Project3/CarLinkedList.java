@@ -2,7 +2,17 @@ package csc216.Project3;
 
 public class CarLinkedList 
 {
-Node head;  // Reference to the first element in the list  
+private Node head;  // Reference to the first element in the list  
+private Node current;
+private Node previous;
+private String[] addCar;
+private String[] stringByKind;
+private Node k;
+private Node p;
+private Car[] addCar2;
+private Car[] carByKind;
+private int available;
+private int reserved;
 	
 	// List elements are Nodes
 	   private static class Node 
@@ -23,7 +33,7 @@ Node head;  // Reference to the first element in the list
 	    */
 	   public CarLinkedList() 
 	   {
-	      head = null;
+	      this.head = null;
 	   }
 	    
 	   
@@ -48,7 +58,7 @@ Node head;  // Reference to the first element in the list
 	    */
 	   public void print()
 	   {
-	      Node p = head;
+	      p = head;
 	      while (p != null) 
 	      {
 	         System.out.println(p.car.getDescription() + " Available: " + p.car.getNumberAvailable() + " Reserved: " + p.car.getNumberReserved());
@@ -62,8 +72,8 @@ Node head;  // Reference to the first element in the list
 	    * @param x string to be inserted into the list
 	    */
 	   public void insertAvailable(Car x){
-	      Node current = head;  // First pointer to travel down the list
-	      Node previous = null; // Follows the first pointer
+	      current = this.head;  // First pointer to travel down the list
+	      previous = null; // Follows the first pointer
 	      
 	      // Search for the insertion position
 	      while (current != null && (current.car.compareTo(x) < 0)) 
@@ -81,9 +91,9 @@ Node head;  // Reference to the first element in the list
 	      else
 	      {
 	    	  x.setNumberAvailable(1);
-	    	  if (current == head) 
+	    	  if (current == this.head) 
 	    	  	{ // x belongs at the front of the list
-	    		  head = new Node(x, head);
+	    		  this.head = new Node(x, this.head);
 
 	    	  	}
 	    	  else 
@@ -92,10 +102,13 @@ Node head;  // Reference to the first element in the list
 	    	  	}     
 	      }
 	   }	   
-	   
+	   /**Reserved list calls this function on itself to insert the car object in the proper spot.
+	    * 
+	    * @param x Car Object to be inserted into reserved list.
+	    */
 	   public void insertReserved(Car x){
-		      Node current = head;  // First pointer to travel down the list
-		      Node previous = null; // Follows the first pointer
+		      current = this.head;  // First pointer to travel down the list
+		      previous = null; // Follows the first pointer
 		     
 		    
 		      // Search for the car object that already exists
@@ -118,16 +131,20 @@ Node head;  // Reference to the first element in the list
 			         current = current.link;
 		    	  }
 		    	  x.setNumberReserved(1);
-		    	head = new Node(x, head);    
+		    	this.head = new Node(x, this.head);    
 		      }
 		      
 		   }	   
-	   
+	   /**Returns an array of car descriptions that are of kind kindToFind.
+	    * 
+	    * @param kindToFind int representation of the category of car we are interested in
+	    * @return String array of car descriptions that are of kind kidnToFind.
+	    */
 	   public String[] getStringByKind(int kindToFind)
 	   {
-		   String[] addCar = null;
-		   String[] stringByKind = new String[0];
-		   Node k = this.head;
+		   addCar = null;
+		   stringByKind = new String[0];
+		   k = this.head;
 		      while (k != null) 
 		      {
 		    	  if(k.car.getCarKind() == kindToFind || kindToFind == 0)
@@ -142,31 +159,39 @@ Node head;  // Reference to the first element in the list
 		      }
 		      return stringByKind;
 	   }
-	   
+	   /**Returns an array of car objects parallel to getStringByKind.
+	    * 
+	    * @param kindToFind int representation of the kind of car to find.
+	    * @return array of car objects parallel to getStringByKind
+	    */
 	   public Car[] getCarByKind(int kindToFind)
 	   {
-		   Car[] addCar = null;
-		   Car[] carByKind = new Car[0];
-		   Node k = head;
+		   addCar2 = null;
+		   carByKind = new Car[0];
+		   k = this.head;
 		      while (k != null) 
 		      {
 		    	  if(k.car.getCarKind() == kindToFind || kindToFind == 0)
 		    	  {
-		    		  addCar = new Car[carByKind.length + 1];
+		    		  addCar2 = new Car[carByKind.length + 1];
 		    		  for(int i = 0; i < carByKind.length; i ++)
-		    			  addCar[i] = carByKind[i];
-		    		  addCar[carByKind.length] = k.car;
-		    		  carByKind = addCar;
+		    			  addCar2[i] = carByKind[i];
+		    		  addCar2[carByKind.length] = k.car;
+		    		  carByKind = addCar2;
 		    	  }
 		    	  k = k.link;
 		      }
 		      return carByKind;
 	   }
 	   
+	   /**Available list calls this to clean itself up and take care of reserving a car.
+	    * 
+	    * @param reserved Car car that is going to be decremented in the available list.
+	    */
 	   public void cleanAvailable(Car reservedCar)
 	   {
-		   Node current = head;  // First pointer to travel down the list
-		   Node previous = null; // Follows the first pointer
+		   current = this.head;  // First pointer to travel down the list
+		   previous = null; // Follows the first pointer
 		   while (current != null)
 		   {
 			   if(current.car.compareTo(reservedCar) == 0)
@@ -182,11 +207,14 @@ Node head;  // Reference to the first element in the list
 			   current = current.link;
 		   }
 	   }
-	   
+	   /**
+	    * Reserved list calls this 
+	    * @param returnedCar
+	    */
 		public void cleanReserved(Car returnedCar)
 		{
-			 Node current = head;  // First pointer to travel down the list
-			 Node previous = null; // Follows the first pointer   
+			 current = this.head;  // First pointer to travel down the list
+			 previous = null; // Follows the first pointer   
 			 while (current != null)
 			   {
 				 if(current.car.compareTo(returnedCar) == 0)
@@ -203,8 +231,8 @@ Node head;  // Reference to the first element in the list
 		
 		public int countAvailable()
 		{
-			int available = 0;
-			Node current = head;
+			available = 0;
+			current = this.head;
 			while(current != null)
 			{
 				available += current.car.getNumberAvailable();
@@ -215,8 +243,8 @@ Node head;  // Reference to the first element in the list
 	   
 		public int countReserved()
 		{
-			int reserved = 0;
-			Node current = head;
+			reserved = 0;
+			current = this.head;
 			while(current != null)
 			{
 				reserved += current.car.getNumberReserved();
