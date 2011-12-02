@@ -13,12 +13,6 @@ public class CarRentalInventory implements Inventory
 	CarLinkedList availableCars = new CarLinkedList();
 	CarLinkedList reservedCars = new CarLinkedList();
 	
-	public static void main(String[] args)
-	{
-		new carGUI();
-
-	}
-	
 	public CarRentalInventory(String file)
 	{
 		Scanner scan = null;
@@ -35,11 +29,11 @@ public class CarRentalInventory implements Inventory
 				try
 				{
 				Car newCar = Car.getCarFromString(currentLine, invLine);
-				if(newCar.numberAvailable > 0)
+				if(newCar.getNumberAvailable() > 0)
 				{
 					availableCars.insertAvailable(newCar);
 				}
-				else if(newCar.numberReserved > 0)
+				else if(newCar.getNumberReserved() > 0)
 				{
 					reservedCars.insertReserved(newCar);
 				}
@@ -104,7 +98,6 @@ public class CarRentalInventory implements Inventory
 	{
 		Car[] reserveCar = availableCars.getCarByKind(kind);
 		Car carToReserve = reserveCar[position];
-		System.out.println(reserveCar[position].getDescription() + " MEGA TEST");
 		reservedCars.insertReserved(carToReserve);
 		availableCars.cleanAvailable(carToReserve);
 	}
@@ -161,7 +154,7 @@ public class CarRentalInventory implements Inventory
 			PrintWriter pw = new PrintWriter(copyWriter);
 			for(int i = 0; i < listReserved.length; i ++)
 			{	
-				switch(listReserved[i].carKind)
+				switch(listReserved[i].getCarKind())
 				{		
 				case 1: type = "c";
 						break;
@@ -181,13 +174,13 @@ public class CarRentalInventory implements Inventory
 				default: type = "Error";
 						break;		
 				}
-				for(int r = 1; r <= listReserved[i].numberReserved; r++)
-					pw.println(type + ", r, " + listReserved[i].carMake + ", " + listReserved[i].carModel + ", " + listReserved[i].carColor);
+				for(int r = 1; r <= listReserved[i].getNumberReserved(); r++)
+					pw.println(type + ", r, " + listReserved[i].getCarMake() + ", " + listReserved[i].getCarModel() + ", " + listReserved[i].getCarColor());
 			}
 			
 			for(int i = 0; i < listAvailable.length; i ++)
 				{
-				switch(listAvailable[i].carKind)
+				switch(listAvailable[i].getCarKind())
 				{		
 				case 1: type = "c";
 						break;
@@ -207,8 +200,8 @@ public class CarRentalInventory implements Inventory
 				default: type = "Error";
 						break;		
 				}
-				for(int a = 1; a <= listAvailable[i].numberAvailable; a++)
-					pw.println(type + ", a, " + listAvailable[i].carMake + ", " + listAvailable[i].carModel + ", " + listAvailable[i].carColor);
+				for(int a = 1; a <= listAvailable[i].getNumberAvailable(); a++)
+					pw.println(type + ", a, " + listAvailable[i].getCarMake() + ", " + listAvailable[i].getCarModel() + ", " + listAvailable[i].getCarColor());
 				}
 			try
 			{

@@ -51,7 +51,7 @@ Node head;  // Reference to the first element in the list
 	      Node p = head;
 	      while (p != null) 
 	      {
-	         System.out.println(p.car.getDescription() + " Available: " + p.car.numberAvailable + " Reserved: " + p.car.numberReserved);
+	         System.out.println(p.car.getDescription() + " Available: " + p.car.getNumberAvailable() + " Reserved: " + p.car.getNumberReserved());
 	         p = p.link;
 	      }
 	   }
@@ -80,7 +80,7 @@ Node head;  // Reference to the first element in the list
 	   
 	      else
 	      {
-	    	  x.numberAvailable = 1;
+	    	  x.setNumberAvailable(1);
 	    	  if (current == head) 
 	    	  	{ // x belongs at the front of the list
 	    		  head = new Node(x, head);
@@ -107,7 +107,7 @@ Node head;  // Reference to the first element in the list
 		      // increment the number reserved
 		      if(current != null && current.car.compareTo(x) == 0)
 		      {
-		    	  current.car.reserve();    		  
+		    	  current.car.reserve();   
 		      }
 		      
 		      else
@@ -117,7 +117,7 @@ Node head;  // Reference to the first element in the list
 		    		 previous = current;
 			         current = current.link;
 		    	  }
-		    	  x.numberReserved = 1;
+		    	  x.setNumberReserved(1);
 		    	head = new Node(x, head);    
 		      }
 		      
@@ -130,7 +130,7 @@ Node head;  // Reference to the first element in the list
 		   Node k = this.head;
 		      while (k != null) 
 		      {
-		    	  if(k.car.carKind == kindToFind || kindToFind == 0)
+		    	  if(k.car.getCarKind() == kindToFind || kindToFind == 0)
 		    	  {
 		    		  addCar = new String[stringByKind.length + 1];
 		    		  for(int i = 0; i < stringByKind.length; i ++)
@@ -150,7 +150,7 @@ Node head;  // Reference to the first element in the list
 		   Node k = head;
 		      while (k != null) 
 		      {
-		    	  if(k.car.carKind == kindToFind || kindToFind == 0)
+		    	  if(k.car.getCarKind() == kindToFind || kindToFind == 0)
 		    	  {
 		    		  addCar = new Car[carByKind.length + 1];
 		    		  for(int i = 0; i < carByKind.length; i ++)
@@ -170,11 +170,11 @@ Node head;  // Reference to the first element in the list
 		   while (current != null)
 		   {
 			   if(current.car.compareTo(reservedCar) == 0)
-				   current.car.numberAvailable--;			
+				   current.car.removeFromInventory();			
 			   
-			   if(current.car.numberAvailable == 0 && previous != null)
+			   if(current.car.getNumberAvailable() == 0 && previous != null)
 				   previous.link = current.link;
-			   else if(current.car.numberAvailable == 0 && previous == null)
+			   else if(current.car.getNumberAvailable() == 0 && previous == null)
 			   {
 				  this.head = current.link;
 			   }
@@ -190,10 +190,10 @@ Node head;  // Reference to the first element in the list
 			 while (current != null)
 			   {
 				 if(current.car.compareTo(returnedCar) == 0)
-					 current.car.numberReserved--;
-				   if(current.car.numberReserved == 0 && previous !=null)
+					 current.car.removeOneReserved();
+				   if(current.car.getNumberReserved() == 0 && previous !=null)
 					   previous.link = current.link;
-				   else if(current.car.numberReserved == 0 && previous == null)
+				   else if(current.car.getNumberReserved() == 0 && previous == null)
 					  this.head = current.link;
 				   previous = current;
 				   current = current.link;
@@ -207,7 +207,7 @@ Node head;  // Reference to the first element in the list
 			Node current = head;
 			while(current != null)
 			{
-				available += current.car.numberAvailable;
+				available += current.car.getNumberAvailable();
 				current = current.link;
 			}
 			return available;
@@ -219,7 +219,7 @@ Node head;  // Reference to the first element in the list
 			Node current = head;
 			while(current != null)
 			{
-				reserved += current.car.numberReserved;
+				reserved += current.car.getNumberReserved();
 				current = current.link;
 			}
 			return reserved;

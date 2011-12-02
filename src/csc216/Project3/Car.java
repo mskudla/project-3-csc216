@@ -10,9 +10,15 @@ public class Car implements RentalItem
 	private static final int SUV = 5;
 	private static final String[] carKindArray = {"All", "Compact","Midsize","Large","Fun", "SUV"};
 
-String carMake, carModel, carColor;
-int carKind, numberAvailable, numberReserved;
-boolean statusOfAvail;
+	private String stringKind;
+	private boolean stringAvail;
+	private String stringMake;
+	private String stringModel;
+	private String stringColor;
+	private String carMake, carModel, carColor;
+	private int carKind, numberAvailable, numberReserved;
+	private boolean statusOfAvail;
+	private static String[] token;
 
 	
 //	public Car(String kind, String make, String model, String color)
@@ -63,6 +69,16 @@ boolean statusOfAvail;
 	{
 		this.numberAvailable++;		
 	}
+	
+	public void removeFromInventory()
+	{
+		this.numberAvailable--;
+	}
+	
+	public void removeFromReserved()
+	{
+		this.numberReserved--;
+	}
 
 	/**
 	 * What is the "kind" of the item.
@@ -83,12 +99,7 @@ boolean statusOfAvail;
 	 */
 	public static Car getCarFromString(String line, int lineNumber) throws CarDataException
 	{
-		String stringKind;
-		boolean stringAvail;
-		String stringMake;
-		String stringModel;
-		String stringColor;
-		String[] token = line.split(",");
+		token = line.split(",");
 		if(token.length != 5)
 		{
 			throw new CarDataException("Bad data on line: " + lineNumber);
@@ -145,5 +156,68 @@ boolean statusOfAvail;
 	public int compareTo(Car compareCar)
 	{
 		return this.getDescription().compareTo(compareCar.getDescription());
+	}
+	
+	public void setNumberReserved(int number)
+	{
+		this.numberReserved = number;
+	}
+	public int getNumberReserved()
+	{
+		return this.numberReserved;
+	}
+	
+	public void setNumberAvailable(int number)
+	{
+		this.numberAvailable = number;
+	}
+	
+	public int getNumberAvailable()
+	{
+		return this.numberAvailable;
+	}
+	
+	public int removeOneReserved()
+	{
+		this.numberReserved--;
+		return this.numberReserved;
+	}
+	
+	public int addOneReserved()
+	{
+		this.numberReserved++;
+		return this.numberReserved;
+	}
+	
+	public int addOneAvailable()
+	{
+		this.numberAvailable++;
+		return this.numberAvailable;
+	}
+	
+	public int removeOneAvailable()
+	{
+		this.numberAvailable++;
+		return this.numberAvailable;
+	}
+	
+	public int getCarKind()
+	{
+		return this.carKind;
+	}
+	
+	public String getCarMake()
+	{
+		return this.carMake;
+	}
+	
+	public String getCarModel()
+	{
+		return this.carModel;
+	}
+	
+	public String getCarColor()
+	{
+		return this.carColor;
 	}
 }
